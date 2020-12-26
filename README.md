@@ -14,5 +14,9 @@ How to apply themes:
   
       http://localhost:8080/list.php?mode={theme}
       
+How to remove file extensions:
+
+    http://localhost:8080/list.php?removeex=true
+
 You can open and browse files, update and return folders and
 It has a look inspired by GitHub.
