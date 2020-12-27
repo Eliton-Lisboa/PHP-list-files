@@ -23,34 +23,58 @@
 
     <style>
         :root {
-            --white-color: rgb(255, 255, 255);
-            --gray-color: rgb(36, 41, 46);
-            --blue-color: rgb(3, 102, 214);
-            --green-color: rgb(46, 164, 79);
+            --background-color: #f6f8fa;
+            --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
 
-            --faint-gray-border: 1px solid rgb(225, 228, 232);
-            --first-btn-color: rgb(243, 244, 246);
-            --first-btn-shadow-color: rgb(211, 212, 214);
-            --btn-active-border: rgba(3, 102, 214 , .3);
-            --font-color: rgb(36, 41, 46);
-            --form-color: transparent;
+            --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
+
+            --txb-background-color: #fafbfc;
+
+            --first-btn-background-color: #fafbfc;
+            --first-btn-border-color: #d9dadc;
+            --first-btn-hover-border-color: #d3d4d6;
+            --first-btn-hover-background-color: #f3f4f6;
+            --first-btn-active-background-color: #edeff2;
+
+            --second-btn-font-color: #0366d6;
+            --second-btn-hover-font-color: #fff;
+            --second-btn-hover-background-color: #0366d6;
+            --second-btn-hover-border-color: #075bbb;
+            --second-btn-active-background-color: #035fc7;
+
+            --first-font-color: #24292e;
+            --second-font-color: #fff;
+            --form-background-color: #fff;
+            --form-border-color: #e1e4e8;
         }
 
         <?php
             if ($mode == 'darkness') {
                 echo "
                 :root {
-                    --white-color: rgb(36, 41, 46);
-                    --gray-color: rgb(36, 41, 46);
-                    --blue-color: rgb(3, 102, 214);
-                    --green-color: rgb(46, 164, 79);
-                    
-                    --faint-gray-border: 1px solid rgb(24, 26, 31);
-                    --first-btn-color: rgb(78, 85, 94);
-                    --first-btn-shadow-color: rgb(84, 87, 91);
-                    --btn-active-border: rgba(3, 102, 214 , .3);
-                    --font-color: rgb(210, 210, 210);
-                    --form-color: rgb(49, 54, 63);
+                    --background-color: #06090f;
+                    --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
+
+                    --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
+
+                    --txb-background-color: #0d1117;
+
+                    --first-btn-background-color: #21262d;
+                    --first-btn-border-color: #30363d;
+                    --first-btn-hover-background-color: #30363d;
+                    --first-btn-hover-border-color: #8b949e;
+                    --first-btn-active-background-color: #161b22;
+
+                    --second-btn-font-color: #58a6ff;
+                    --second-btn-hover-font-color: #58a6ff;
+                    --second-btn-hover-background-color: #30363d;
+                    --second-btn-hover-border-color: #58a6ff;
+                    --second-btn-active-background-color: #0d419d;
+
+                    --first-font-color: #c9d1d9;
+                    --second-font-color: #fff;
+                    --form-background-color: #0d1117;
+                    --form-border-color: #30363d;
                 }
                 ";
             }
@@ -59,15 +83,15 @@
         ::-webkit-scrollbar {
             width: 7px;
             height: 7px;
-            background-color: var(--white-color);
+            background-color: var(--background-color);
         }
         ::-webkit-scrollbar-thumb {
-            background-color: var(--blue-color);
+            background-color: var(--scrollbar-thumb-background-color);
         }
 
         body {
             margin: 0px;
-            background-color: var(--white-color);
+            background-color: var(--background-color);
             font-family:
             '-apple-system',
             'BlinkMacSystemFont',
@@ -87,13 +111,13 @@
             display: block;
             position: relative;
             margin: 50px auto 50px auto;
-            background-color: var(--form-color);
-            color: var(--font-color);
+            background-color: var(--form-background-color);
+            color: var(--first-font-color);
             text-align: center;
             border-radius: 6px;
             padding: 4px;
             padding-bottom: 6px;
-            border: var(--faint-gray-border);
+            border: 1px solid var(--form-border-color);
         }
 
         body div#initial div#error {
@@ -118,31 +142,44 @@
 
         body div#initial div#buttons a {
             text-decoration: none;
+            outline: none;
+            transition: .2s cubic-bezier(.3, 0, .5, 1);
+            user-select: none;
             display: block;
             width: 80%;
             text-align: center;
             margin: 6px auto 6px auto;
-            background-color: var(--first-btn-color);
+            font-size: 12pt;
+            background-color: var(--first-btn-background-color);
             border-radius: 4px;
-            height: 22px;
-            color: var(--font-color);
-            line-height: 1.3rem;
-            border: 1px solid var(--first-btn-shadow-color);
+            height: 24px;
+            color: var(--first-font-color);
+            border: 1px solid var(--first-btn-border-color);
         }
-        body div#initial div#buttons a:active { box-shadow: 0px 0px 0px 3px var(--btn-active-border); }
+        body div#initial div#buttons a:hover {
+            border: 1px solid var(--first-btn-hover-border-color);
+            background-color: var(--first-btn-hover-background-color);
+        }
+        body div#initial div#buttons a:active {
+            background-color: var(--first-btn-active-background-color);
+        }
+        body div#initial div#buttons a:focus {
+            box-shadow: var(--btn-focus-box-shadow);
+            border: 1px solid var(--second-btn-hover-border-color);
+        }
 
         body div#initial div#buttons a.btn-folder {
-            background-color: var(--blue-color);
-            border-color: var(--blue-color);
+            color: var(--second-btn-font-color);
         }
-        <?php
-            if ($mode == 'light') {
-                echo '
-                body div#initial div#buttons a.btn-folder {
-                    color: var(--white-color);
-                }';
-            }
-        ?>
+        body div#initial div#buttons a.btn-folder:hover {
+            border: 1px solid var(--second-btn-hover-border-color);
+            background-color: var(--second-btn-hover-background-color);
+            color: var(--second-btn-hover-font-color);
+        }
+        body div#initial div#buttons a.btn-folder:active {
+            background-color: var(--second-btn-active-background-color);
+            color: var(--second-font-color);
+        }
 
         /* header */
         body div#initial div#header {
@@ -174,21 +211,24 @@
             border-radius: 0px;
             display: inline-block;
             position: relative;
-            fill: var(--font-color);
+            fill: var(--first-font-color);
             margin: 6px;
         }
 
         body div#initial div#header input#txbSearch {
-            border: var(--faint-gray-border);
+            border: 1px solid var(--first-btn-background-color);
             border-radius: 4px;
             width: 60%;
             height: 20px;
-            background-color: var(--white-color);
+            background-color: var(--txb-background-color);
             outline: none;
-            color: var(--font-color);
+            color: var(--first-font-color);
             text-align: center;
             font-size: 12pt;
             display: inline-block;
+        }
+        body div#initial div#header input#txbSearch:focus {
+            border: 1px solid var(--second-btn-hover-border-color);
         }
 
         body div#buttons {
@@ -196,7 +236,7 @@
         }
 
         body div#buttons svg.btnBrowser {
-            fill: var(--font-color);
+            fill: var(--first-font-color);
             height: 24px;
             margin-left: 10px;
         }
@@ -219,7 +259,7 @@
     </style>
 
     <link rel='icon' href='https://icons.iconarchive.com/icons/papirus-team/papirus-mimetypes/256/app-x-php-icon.png'/>
-    <title>File list on server</title>
+    <title></> File list on server</title>
 </head>
 <body id='body'>
 
@@ -238,7 +278,7 @@
                 <svg class='top-buttons' onclick='window.location.reload()' viewBox='0 0 458.186 458.186'><g transform='matrix(-1,0,0,1,458.1860580444336,0)'><g> <path d='M445.651,201.95c-1.485-9.308-10.235-15.649-19.543-14.164c-9.308,1.485-15.649,10.235-14.164,19.543c0.016,0.102,0.033,0.203,0.051,0.304c17.38,102.311-51.47,199.339-153.781,216.719c-102.311,17.38-199.339-51.47-216.719-153.781S92.966,71.232,195.276,53.852c62.919-10.688,126.962,11.29,170.059,58.361l-75.605,25.19c-8.944,2.976-13.781,12.638-10.806,21.582c0.001,0.002,0.002,0.005,0.003,0.007c2.976,8.944,12.638,13.781,21.582,10.806c0.003-0.001,0.005-0.002,0.007-0.002l102.4-34.133c6.972-2.322,11.675-8.847,11.674-16.196v-102.4C414.59,7.641,406.949,0,397.523,0s-17.067,7.641-17.067,17.067v62.344C292.564-4.185,153.545-0.702,69.949,87.19s-80.114,226.911,7.779,310.508s226.911,80.114,310.508-7.779C435.905,339.799,457.179,270.152,445.651,201.95z'/> </g> </svg>
             </div>
 
-            <input type='text' id='txbSearch'/>
+            <input type='text' id='txbSearch' placeholder='Search a file or a folder'/>
         </div>
 
         <div id='buttons'>
