@@ -18,5 +18,6 @@ How to remove file extensions:
 
     http://localhost:8080/list.php?removeex=true
 
+All browsers compatibility.
 You can open and browse files, update and return folders and
 It has a look inspired by GitHub.
