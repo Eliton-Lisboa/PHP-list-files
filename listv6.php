@@ -139,12 +139,12 @@
         }
 
         body div#initial div#error svg {
-            fill: var(--first-btn-color);
+            fill: var(--first-btn-background-color);
             width: 100px;
         }
 
         body div#initial div#error h2 {
-            color: var(--first-btn-color);
+            color: var(--first-btn-background-color);
             font-size: 14pt;
             margin: 0px;
         }
