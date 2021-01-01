@@ -286,9 +286,8 @@
             margin: 6px auto 20px auto;
             display: block;
             position: relative;
-            border: var(--faint-gray-border);
+            border: 1px solid var(--form-border-color);
             border-radius: 6px;
-            background-color: #fff;
         }
 
     </style>
