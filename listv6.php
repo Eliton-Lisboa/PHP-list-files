@@ -288,6 +288,7 @@
             position: relative;
             border: 1px solid var(--form-border-color);
             border-radius: 6px;
+            background-color: #fff;
         }
 
     </style>
@@ -480,7 +481,7 @@
 
                 <iframe id='browser' src='$browse' frameborder='0'></iframe>
             ";
-
+                
         }
     ?>
 </body>
