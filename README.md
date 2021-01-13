@@ -12,7 +12,7 @@ How to apply themes:
       
   Apply:
   
-      http://localhost:8080/list.php?theme={theme}
+      http://localhost:8080/list.php?theme="your theme"
       
 How to remove file extensions:
 
