@@ -22,7 +22,6 @@
                 let deleted_files_number_lines = []
                 let folder_list                = []
                 let file_lines                 = []
-                let file_info                  = []
                 let theme                      = '$theme'
                 let program_name               = '$program_name'
                 let dir                        = '$dir'
@@ -38,6 +37,8 @@
             --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
 
             --txb-background-color: #fafbfc;
+            --txb-focus-border-color: #0366d6;
+            --txb-border-color: #d9dadc;
 
             --first-btn-font-color: #24292e;
             --first-btn-background-color: #fafbfc;
@@ -74,6 +75,8 @@
                     --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
 
                     --txb-background-color: #0d1117;
+                    --txb-focus-border-color: #388bfd;
+                    --txb-border-color: #21262d;
 
                     --first-btn-font-color: #c9d1d9;
                     --first-btn-background-color: #21262d;
@@ -248,9 +251,6 @@
             fill: var(--first-font-color);
             display: none;
         }
-        body div#initial div#buttons div.btn-file-division svg.btn-info-file {
-            margin-left: 32%;
-        }
         body div#initial div#buttons div.btn-file-division svg:hover,
         body div#initial div#buttons div.btn-file-division svg:hover ~ svg {
             display: inline-block;
@@ -317,7 +317,7 @@
         }
 
         body div#initial div#header input#txbSearch {
-            border: 1px solid var(--first-btn-background-color);
+            border: 1px solid var(--txb-border-color);
             border-radius: 4px;
             width: 60%;
             height: 20px;
@@ -329,22 +329,23 @@
             display: inline-block;
         }
         body div#initial div#header input#txbSearch:focus {
-            border: 1px solid var(--second-btn-hover-border-color);
+            border: 1px solid var(--txb-focus-border-color);
         }
 
         /* Info Item */
         body div#info-item {
             margin: 10px auto 10px auto;
-            min-height: 100px;
             display: none;
+            padding: 20px 0px 20px 0px;
+            min-height: 0px;
         }
 
         body div#info-item line {
             display: flex;
             justify-content: space-around;
         }
-        body div#info-item name { width: 130px; }
-        body div#info-item value { width: 130px; }
+        body div#info-item name { width: 180px; }
+        body div#info-item value { width: 180px; }
 
         /* Browser */
         body div#buttons {
@@ -396,15 +397,15 @@
         }
 
         if ($delete != false and file_exists($delete)) {
-            unlink($delete);
+            // unlink($delete);
             goto end_program;
         }
 
-        if ($create != false and !file_exists($create)) {
-            echo $create. '=>'. $content;
-            $file = fopen($create, 'w');
-            fwrite($file, $content);
-            fclose($file);
+        if ($create != false) {
+            echo $create. '=>'. str_replace('$this<-|->break-line', "\n", $content);
+            // $file = fopen($create, 'w');
+            // fwrite($file, $content);
+            // fclose($file);
             goto end_program;
         }
 
@@ -447,24 +448,10 @@
                     {
                         $tmp = strtolower(str_replace(' ', '-', $file));
                         $lines = ArrayToString(file($file));
-                        $info = array(
-                            'type' => filetype($file),
-                            'size' => filesize($file),
-                            'atime' => fileatime($file),
-                            'ctime' => filectime($file),
-                            'mtime' => filemtime($file),
-                            'owner' => fileowner($file)
-                        );
                         if ($removeex) { $file = substr($file, 0, -strlen(pathinfo($file, PATHINFO_EXTENSION)) - 1); }
                         echo "
                         <div class='btn-file-division'>
                             <a href='http://localhost:8080/$program_name?theme=$theme&browse=http://localhost:8080/$dir/$file' class='item $tmp'>$file</a>
-
-                            <svg viewBox='0 0 330 330' class='btn-info-file info-$tmp'>
-                                <path class='btn-info-file info-$tmp' d='M165,0.008C74.019,0.008,0,74.024,0,164.999c0,90.977,74.019,164.992,165,164.992s165-74.015,165-164.992C330,74.024,255.981,0.008,165,0.008z M165,299.992c-74.439,0-135-60.557-135-134.992S90.561,30.008,165,30.008s135,60.557,135,134.991C300,239.436,239.439,299.992,165,299.992z'/>
-                                <path class='btn-info-file info-$tmp' d='M165,130.008c-8.284,0-15,6.716-15,15v99.983c0,8.284,6.716,15,15,15s15-6.716,15-15v-99.983C180,136.725,173.284,130.008,165,130.008z'/>
-                                <path class='btn-info-file info-$tmp' d='M165,70.011c-3.95,0-7.811,1.6-10.61,4.39c-2.79,2.79-4.39,6.66-4.39,10.61s1.6,7.81,4.39,10.61c2.79,2.79,6.66,4.39,10.61,4.39s7.81-1.6,10.609-4.39c2.79-2.8,4.391-6.66,4.391-10.61s-1.601-7.82-4.391-10.61C172.81,71.61,168.95,70.011,165,70.011z'/>
-                            </svg>
 
                             <svg viewBox='-47 0 512 512' class='btn-delete-file delete-$tmp'>
                                 <path class='btn-delete-file delete-$tmp' d='m416.875 114.441406-11.304688-33.886718c-4.304687-12.90625-16.339843-21.578126-29.941406-21.578126h-95.011718v-30.933593c0-15.460938-12.570313-28.042969-28.027344-28.042969h-87.007813c-15.453125 0-28.027343 12.582031-28.027343 28.042969v30.933593h-95.007813c-13.605469 0-25.640625 8.671876-29.945313 21.578126l-11.304687 33.886718c-2.574219 7.714844-1.2695312 16.257813 3.484375 22.855469 4.753906 6.597656 12.445312 10.539063 20.578125 10.539063h11.816406l26.007813 321.605468c1.933594 23.863282 22.183594 42.558594 46.109375 42.558594h204.863281c23.921875 0 44.175781-18.695312 46.105469-42.5625l26.007812-321.601562h6.542969c8.132812 0 15.824219-3.941407 20.578125-10.535157 4.753906-6.597656 6.058594-15.144531 3.484375-22.859375zm-249.320312-84.441406h83.0625v28.976562h-83.0625zm162.804687 437.019531c-.679687 8.402344-7.796875 14.980469-16.203125 14.980469h-204.863281c-8.40625 0-15.523438-6.578125-16.203125-14.980469l-25.816406-319.183593h288.898437zm-298.566406-349.183593 9.269531-27.789063c.210938-.640625.808594-1.070313 1.484375-1.070313h333.082031c.675782 0 1.269532.429688 1.484375 1.070313l9.269531 27.789063zm0 0'/>
@@ -473,19 +460,12 @@
                                 <path class='btn-delete-file delete-$tmp' d='m209.253906 465.976562c8.285156 0 15-6.714843 15-15v-270.398437c0-8.285156-6.714844-15-15-15s-15 6.714844-15 15v270.398437c0 8.285157 6.714844 15 15 15zm0 0'/>
                             </svg>
                         </div>";
+
                         echo "
                         <script>
                             file_list.push('$tmp')
                             delete_file_list.push('delete-$tmp')
                             file_lines.push('$lines')
-                            file_info.push(`
-                                <line> <name>Type:</name>  <value>{$info['type']}</value>  </line>
-                                <line> <name>Size:</name>  <value>{$info['size']}</value>  </line>
-                                <line> <name>ATime:</name> <value>{$info['atime']}</value> </line>
-                                <line> <name>CTime:</name> <value>{$info['ctime']}</value> </line>
-                                <line> <name>MTime:</name> <value>{$info['mtime']}</value> </line>
-                                <line> <name>Owner:</name> <value>{$info['owner']}</value> </line>
-                            `)
                         </script>";
                     }
                 }
@@ -499,7 +479,7 @@
                             str_replace('>', '&#62;',
                             str_replace('\'', '&quot;',
                             str_replace('"', '&apos;',
-                            $array[$x]) ) ) ) );
+                            $array[$x] ) ) ) ) );
                     }
 
                     return $newString;
@@ -641,16 +621,6 @@
         const $btn_info_file       = document.getElementsByClassName('btn-info-file'        )
         const $info_item           = document.getElementById        ('info-item'            )
 
-        for (let x = 0; x < $btn_info_file.length; x++) {
-
-            $btn_info_file[x].addEventListener('click', event => {
-                _tmp = event.path[0].className.baseVal.split(' ')[1].trim().substring('info-'.length)
-
-                $info_item.style.display = 'block'
-                $info_item.innerHTML = file_info[findArrayItem(file_list, _tmp)]
-            })
-        }
-
         for (let x = 0; x < delete_file_list.length; x++)
         {
             let _tmp = document.getElementsByClassName( delete_file_list[x] )
@@ -682,6 +652,7 @@
 
         $popup_recreate_file.addEventListener('click', () => {
             _tmp = file_lines[deleted_files_number_lines[deleted_files_number_lines.length - 1]].
+            replaceAll('#', '%23').
             replaceAll(' ', '%20').
             replaceAll('&', '%26').
             replaceAll('`', '%60').

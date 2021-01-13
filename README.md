@@ -3,17 +3,17 @@
 Enter your web browser and enter url:
 
     http://localhost:8080/list.php
-    
+
 How to apply themes:
   Themes:
-      
+
       light
       darkness
-      
+
   Apply:
-  
-      http://localhost:8080/list.php?mode={theme}
-      
+
+      http://localhost:8080/list.php?theme={theme}
+
 How to remove file extensions:
 
     http://localhost:8080/list.php?removeex=true
