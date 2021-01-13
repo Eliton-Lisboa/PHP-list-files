@@ -12,6 +12,7 @@
         $delete = isset( $_GET['delete'] ) ? $_GET['delete'] : false;
         $create = isset( $_GET['create'] ) ? $_GET['create'] : false;
         $content = isset( $_GET['content'] ) ? $_GET['content'] : false;
+        $newStyleSheet = isset( $_GET['styles'] ) ? $_GET['styles'] : false;
         $tmp = '';
 
         echo "
@@ -385,6 +386,12 @@
         }
 
     </style>
+
+    <?php
+        if ($newStyleSheet) {
+            echo "<link rel='stylesheet' href='$newStyleSheet'/>";
+        }
+    ?>
 
     <link rel='icon' href='https://icons.iconarchive.com/icons/papirus-team/papirus-mimetypes/256/app-x-php-icon.png'/>
     <title>&#60;/&#62; File list on server</title>
