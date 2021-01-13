@@ -8,7 +8,7 @@
         $theme = isset( $_GET['theme'] ) ? $_GET['theme'] : 'light';
         $dir = isset( $_GET['search'] ) ? $_GET['search'] : './';
         $browse = isset( $_GET['browse'] ) ? $_GET['browse']  : false;
-        $removeex = isset( $_GET['removeex'] ) ? $_GET['removeex'] : false;
+        $removeExtension = isset( $_GET['removeex'] ) ? $_GET['removeex'] : false;
         $delete = isset( $_GET['delete'] ) ? $_GET['delete'] : false;
         $create = isset( $_GET['create'] ) ? $_GET['create'] : false;
         $content = isset( $_GET['content'] ) ? $_GET['content'] : false;
@@ -444,9 +444,17 @@
                     {
                         $tmp01 = strtolower(str_replace(' ', '-', $file));
                         $lines = ArrayToString(file($dir . '/'. $file));
-                        if ($removeex) { $file = substr($file, 0, -strlen(pathinfo($file, PATHINFO_EXTENSION)) - 1); }
+                        if ($removeExtension) {
+                            $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+                            $file = substr($file, 0, -strlen(pathinfo($file, PATHINFO_EXTENSION)) - 1);
+                        }
                         $tmp02 = substr(strstr($_SERVER['REQUEST_URI'], $program_name, true), 1);
-                        $url = "http://localhost:8080/$tmp02$program_name?theme=$theme&browse=http://localhost:8080/$tmp02$dir/$file";
+                        if ($removeExtension) {
+                            $url = "http://localhost:8080/$tmp02$program_name?theme=$theme&browse=http://localhost:8080/$tmp02$dir/$file.$fileExtension";
+                        }
+                        else {
+                            $url = "http://localhost:8080/$tmp02$program_name?theme=$theme&browse=http://localhost:8080/$tmp02$dir/$file";
+                        }
                         
                         echo "
                         <div class='btn-file-division'>
