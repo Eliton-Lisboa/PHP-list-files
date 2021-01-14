@@ -41,6 +41,7 @@
         :root {
             --background-color: #f6f8fa;
             --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
+            --selection-background-color: #58a6ff;
 
             --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
 
@@ -76,6 +77,7 @@
         .darkness:root {
             --background-color: #06090f;
             --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
+            --selection-background-color: #58a6ff;
 
             --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
 
@@ -115,6 +117,10 @@
         }
         ::-webkit-scrollbar-thumb {
             background-color: var(--scrollbar-thumb-background-color);
+        }
+
+        ::selection {
+            background-color: var(--selection-background-color);
         }
 
         body {
