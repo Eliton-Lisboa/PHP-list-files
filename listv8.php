@@ -19,19 +19,19 @@
 
         echo "
             <script>
+                const theme                    = '$theme'
+                const program_name             = '$program_name'
+                const dir                      = '$dir'
                 let file_list                  = []
                 let delete_file_list           = []
                 let deleted_files              = []
                 let deleted_files_number_lines = []
                 let folder_list                = []
                 let file_lines                 = []
-                let theme                      = '$theme'
-                let program_name               = '$program_name'
-                let dir                        = '$dir'
-                let tmp                        = document.querySelector('html')
-                let tmpBool                    = false
+                let _tmp                        = document.querySelector('html')
+                let _tmpBool                    = false
 
-                tmp.className += theme
+                _tmp.className += theme
             </script>
         ";
     ?>
@@ -47,6 +47,7 @@
             --txb-background-color: #fafbfc;
             --txb-focus-border-color: #0366d6;
             --txb-border-color: #d9dadc;
+            --txb-placeholder-color: #d9dadc;
 
             --first-btn-font-color: #24292e;
             --first-btn-background-color: #fafbfc;
@@ -81,6 +82,7 @@
             --txb-background-color: #0d1117;
             --txb-focus-border-color: #388bfd;
             --txb-border-color: #21262d;
+            --txb-placeholder-color: #30363d;
 
             --first-btn-font-color: #c9d1d9;
             --first-btn-background-color: #21262d;
@@ -329,6 +331,9 @@
             font-size: 12pt;
             display: inline-block;
         }
+        body div#initial div#header input#txbSearch::-webkit-input-placeholder {
+            color: var(--txb-placeholder-color);
+        }
         body div#initial div#header input#txbSearch:focus {
             border: 1px solid var(--txb-focus-border-color);
         }
@@ -412,7 +417,7 @@
                 <svg class='top-buttons' onclick='window.location.reload()' viewBox='0 0 458.186 458.186'> <g transform='matrix(-1,0,0,1,458.1860580444336,0)'> <path d='M445.651,201.95c-1.485-9.308-10.235-15.649-19.543-14.164c-9.308,1.485-15.649,10.235-14.164,19.543c0.016,0.102,0.033,0.203,0.051,0.304c17.38,102.311-51.47,199.339-153.781,216.719c-102.311,17.38-199.339-51.47-216.719-153.781S92.966,71.232,195.276,53.852c62.919-10.688,126.962,11.29,170.059,58.361l-75.605,25.19c-8.944,2.976-13.781,12.638-10.806,21.582c0.001,0.002,0.002,0.005,0.003,0.007c2.976,8.944,12.638,13.781,21.582,10.806c0.003-0.001,0.005-0.002,0.007-0.002l102.4-34.133c6.972-2.322,11.675-8.847,11.674-16.196v-102.4C414.59,7.641,406.949,0,397.523,0s-17.067,7.641-17.067,17.067v62.344C292.564-4.185,153.545-0.702,69.949,87.19s-80.114,226.911,7.779,310.508s226.911,80.114,310.508-7.779C435.905,339.799,457.179,270.152,445.651,201.95z'/> </svg>
             </div>
 
-            <input type='text' id='txbSearch'/>
+            <input type='text' id='txbSearch' placeholder='Search files and folders'/>
         </div>
 
         <div id='buttons'>
@@ -519,20 +524,20 @@
 
                         for (x = 0; x < folder_list.length; x++)
                         {
-                            tmp = document.getElementsByClassName(folder_list[x])[0].text
+                            _tmp = document.getElementsByClassName(folder_list[x])[0].text
 
-                            // if (tmp.substring(0, $txbSearch.value.length) == $txbSearch.value)
-                            if (tmp.includes($txbSearch.value))
+                            // if (_tmp.substring(0, $txbSearch.value.length) == $txbSearch.value)
+                            if (_tmp.includes($txbSearch.value))
                             {
-                                tmp = document.getElementsByClassName(folder_list[x])
-                                for (y = 0; y < tmp.length; y++) {
-                                    tmp[y].style.display = 'block'
+                                _tmp = document.getElementsByClassName(folder_list[x])
+                                for (y = 0; y < _tmp.length; y++) {
+                                    _tmp[y].style.display = 'block'
                                 }
                             }
                             else {
-                                tmp = document.getElementsByClassName(folder_list[x])
-                                for (y = 0; y < tmp.length; y++) {
-                                    tmp[y].style.display = 'none'
+                                _tmp = document.getElementsByClassName(folder_list[x])
+                                for (y = 0; y < _tmp.length; y++) {
+                                    _tmp[y].style.display = 'none'
                                 }
                             }
 
@@ -543,20 +548,20 @@
 
                         for (x = 0; x < file_list.length; x++)
                         {
-                            tmp = document.getElementsByClassName(file_list[x])[0].text
+                            _tmp = document.getElementsByClassName(file_list[x])[0].text
 
-                            // if (tmp.substring(0, $txbSearch.value.length) == $txbSearch.value)
-                            if (tmp.includes($txbSearch.value))
+                            // if (_tmp.substring(0, $txbSearch.value.length) == $txbSearch.value)
+                            if (_tmp.includes($txbSearch.value))
                             {
-                                tmp = document.getElementsByClassName(file_list[x])
-                                for (y = 0; y < tmp.length; y++) {
-                                    tmp[y].style.display = 'block'
+                                _tmp = document.getElementsByClassName(file_list[x])
+                                for (y = 0; y < _tmp.length; y++) {
+                                    _tmp[y].style.display = 'block'
                                 }
                             }
                             else {
-                                tmp = document.getElementsByClassName(file_list[x])
-                                for (y = 0; y < tmp.length; y++) {
-                                    tmp[y].style.display = 'none'
+                                _tmp = document.getElementsByClassName(file_list[x])
+                                for (y = 0; y < _tmp.length; y++) {
+                                    _tmp[y].style.display = 'none'
                                 }
                             }
 
@@ -565,37 +570,37 @@
 
                 }
                 else {
-                    tmp = $txbSearch.value.replace(' ', '-')
+                    _tmp = $txbSearch.value.replace(' ', '-')
 
                     try {
                         for (x = 0; x < file_list.length; x++)
                         {
-                            tmp = document.getElementsByClassName(file_list[x])
-                            for (y = 0; y < tmp.length; y++) {
-                                tmp[y].style.display = 'block'
+                            _tmp = document.getElementsByClassName(file_list[x])
+                            for (y = 0; y < _tmp.length; y++) {
+                                _tmp[y].style.display = 'block'
                             }
                         }
 
                         for (x = 0; x < folder_list.length; x++)
                         {
-                            tmp = document.getElementsByClassName(folder_list[x])
-                            for (y = 0; y < tmp.length; y++) {
-                                tmp[y].style.display = 'block'
+                            _tmp = document.getElementsByClassName(folder_list[x])
+                            for (y = 0; y < _tmp.length; y++) {
+                                _tmp[y].style.display = 'block'
                             }
                         }
                         
                     } catch (error) { }
                 }
 
-                tmpBool = true
+                _tmpBool = true
                 for (x = 0; x < document.querySelectorAll('body div#initial a.item').length; x++)
                 {
                     if (document.querySelectorAll('body div#initial a.item')[x].style.display == 'block') {
-                        tmpBool = false
+                        _tmpBool = false
                     }
                 }
 
-                if (tmpBool)
+                if (_tmpBool)
                     document.getElementById('error').style.display = 'block'
                 else
                     document.getElementById('error').style.display = 'none'
@@ -626,7 +631,7 @@
 
         for (let x = 0; x < delete_file_list.length; x++)
         {
-            let _tmp = document.getElementsByClassName( delete_file_list[x] )
+            _tmp = document.getElementsByClassName( delete_file_list[x] )
 
             _tmp[0].addEventListener('click', event => {
                 _element_class = event.path[0].className.baseVal.split(' ')[1].substring(7)
@@ -664,8 +669,6 @@
             replaceAll('&#62;', '%3E').
             replaceAll('&quot;', '%27').
             replaceAll('&apos;', '%27')
-
-            console.log( _tmp )
 
             $iframe_delete_files.src = 'http://localhost:8080/' + program_name + '?create=' + deleted_files[deleted_files.length - 1] + '&content=' + _tmp
             console.log( deleted_files_number_lines[deleted_files_number_lines.length - 1] )
