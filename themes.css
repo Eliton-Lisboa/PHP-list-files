@@ -34,3 +34,15 @@
     --form-background-color: #fff;
     --form-border-color: #e1e4e8;
 }
+
+:root.orange {
+    --background-color: orange;
+
+    --btn-focus-box-shadow: 0px 0px 0px 3px rgba(243, 156, 18, .8);
+
+    --first-btn-hover-border-color: #f39c12;
+
+    --second-btn-hover-background-color: orange;
+    --second-btn-hover-border-color: #f39c12;
+    --second-btn-active-background-color: #f39c12;
+}
