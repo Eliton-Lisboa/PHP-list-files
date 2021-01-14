@@ -28,11 +28,16 @@
                 let theme                      = '$theme'
                 let program_name               = '$program_name'
                 let dir                        = '$dir'
+                let tmp                        = document.querySelector('html')
+                let tmpBool                    = false
+
+                tmp.className += theme
             </script>
         ";
     ?>
 
     <style>
+
         :root {
             --background-color: #f6f8fa;
             --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
@@ -59,7 +64,7 @@
             --second-btn-hover-border-color: #075bbb;
             --second-btn-active-background-color: #035fc7;
 
-            --error-message-fill: #e1e4e8;
+            --error-message-fill: #d9dadc;
 
             --first-font-color: #24292e;
             --second-font-color: #fff;
@@ -67,45 +72,39 @@
             --form-border-color: #e1e4e8;
         }
 
-        <?php
-            if ($theme == 'darkness') {
-                echo "
-                :root {
-                    --background-color: #06090f;
-                    --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
+        .darkness:root {
+            --background-color: #06090f;
+            --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
 
-                    --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
+            --btn-focus-box-shadow: 0px 0px 0px 3px rgba(17, 88, 199, .4);
 
-                    --txb-background-color: #0d1117;
-                    --txb-focus-border-color: #388bfd;
-                    --txb-border-color: #21262d;
+            --txb-background-color: #0d1117;
+            --txb-focus-border-color: #388bfd;
+            --txb-border-color: #21262d;
 
-                    --first-btn-font-color: #c9d1d9;
-                    --first-btn-background-color: #21262d;
-                    --first-btn-border-color: #30363d;
-                    --first-btn-hover-font-color: #c9d1d9;
-                    --first-btn-hover-background-color: #30363d;
-                    --first-btn-hover-border-color: #8b949e;
-                    --first-btn-active-background-color: #161b22;
+            --first-btn-font-color: #c9d1d9;
+            --first-btn-background-color: #21262d;
+            --first-btn-border-color: #30363d;
+            --first-btn-hover-font-color: #c9d1d9;
+            --first-btn-hover-background-color: #30363d;
+            --first-btn-hover-border-color: #8b949e;
+            --first-btn-active-background-color: #161b22;
 
-                    --second-btn-font-color: #58a6ff;
-                    --second-btn-background-color: #21262d;
-                    --second-btn-border-color: #30363d;
-                    --second-btn-hover-font-color: #58a6ff;
-                    --second-btn-hover-background-color: #30363d;
-                    --second-btn-hover-border-color: #58a6ff;
-                    --second-btn-active-background-color: #0d419d;
+            --second-btn-font-color: #58a6ff;
+            --second-btn-background-color: #21262d;
+            --second-btn-border-color: #30363d;
+            --second-btn-hover-font-color: #58a6ff;
+            --second-btn-hover-background-color: #30363d;
+            --second-btn-hover-border-color: #58a6ff;
+            --second-btn-active-background-color: #0d419d;
 
-                    -error-message-color: #0d1117;
+            --error-message-fill: #21262d;
 
-                    --first-font-color: #c9d1d9;
-                    --second-font-color: #fff;
-                    --form-background-color: #0d1117;
-                    --form-border-color: #30363d;
-                }
-                ";
-            }
-        ?>
+            --first-font-color: #c9d1d9;
+            --second-font-color: #fff;
+            --form-background-color: #0d1117;
+            --form-border-color: #30363d;
+        }
 
         ::-webkit-scrollbar {
             width: 7px;
@@ -511,8 +510,6 @@
         <script>
             const $txbSearch = document.getElementById('txbSearch')
             const $error     = document.getElementById('error'    )
-            let tmp = ''
-            let tmpbool
 
             $txbSearch.addEventListener('keyup', key => {
 
@@ -590,15 +587,15 @@
                     } catch (error) { }
                 }
 
-                tmpbool = true
+                tmpBool = true
                 for (x = 0; x < document.querySelectorAll('body div#initial a.item').length; x++)
                 {
                     if (document.querySelectorAll('body div#initial a.item')[x].style.display == 'block') {
-                        tmpbool = false
+                        tmpBool = false
                     }
                 }
 
-                if (tmpbool)
+                if (tmpBool)
                     document.getElementById('error').style.display = 'block'
                 else
                     document.getElementById('error').style.display = 'none'
