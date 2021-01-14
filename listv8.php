@@ -74,7 +74,7 @@
             --form-border-color: #e1e4e8;
         }
 
-        .darkness:root {
+        :root.darkness {
             --background-color: #06090f;
             --scrollbar-thumb-background-color: rgba(17, 88, 199, 1);
             --selection-background-color: #58a6ff;
@@ -137,36 +137,6 @@
             'Segoe UI Emoji';
         }
 
-        /* Iframe delete files */
-        body iframe#iframe-file-functions {
-            display: none;
-        }
-
-        /* Popup recreate deleted file */
-        body div#popup-recreate-file {
-            position: relative;
-            transition: all 3s ease-in;
-            display: none;
-            margin: 6px;
-        }
-
-        body div#popup-recreate-file div.content {
-            cursor: pointer;
-            border-radius: 6px;
-            color: var(--first-font-color);
-            background-color: var(--form-background-color);
-            border: 1px solid var(--form-border-color);
-            align-items: center;
-            display: flex;
-            padding-left: 20px;
-            width: 300px;
-            height: 30px;
-        }
-
-        body div#popup-recreate-file div p {
-            margin: 0px;
-        }
-
         /* Initial */
         body div#initial,
         body div#info-item {
@@ -184,111 +154,6 @@
             padding: 4px;
             padding-bottom: 6px;
             border: 1px solid var(--form-border-color);
-        }
-
-        /* Error */
-        body div#initial div#error {
-            display: none;
-            margin-top: 50px;
-        }
-
-        body div#initial div#error svg {
-            fill: var(--error-message-fill);
-            width: 100px;
-        }
-
-        body div#initial div#error h2 {
-            color: var(--error-message-fill);
-            font-size: 14pt;
-            margin: 0px;
-        }
-
-        /* Buttons */
-        body div#initial div#buttons {
-            padding-top: 8px;
-        }
-
-        body div#initial div#buttons a.item {
-            text-decoration: none;
-            outline: none;
-            transition: .2s cubic-bezier(.3, 0, .5, 1);
-                -webkit-transition: .2s cubic-bezier(.3, 0, .5, 1);
-                -moz-transition: .2s cubic-bezier(.3, 0, .5, 1);
-                -o-transition: .2s cubic-bezier(.3, 0, .5, 1);
-            user-select: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -moz-user-select: none;
-            display: block;
-            width: 80%;
-            text-align: center;
-            margin: 6px auto 6px auto;
-            font-size: 12pt;
-            border-radius: 4px;
-            height: 24px;
-            color: var(--first-btn-font-color);
-            background-color: var(--first-btn-background-color);
-            border: 1px solid var(--first-btn-border-color);
-        }
-        body div#initial div#buttons a.item:hover {
-            color: var(--first-btn-hover-font-color);
-            background-color: var(--first-btn-hover-background-color);
-            border: 1px solid var(--first-btn-hover-border-color);
-        }
-        body div#initial div#buttons a.item:hover ~ svg {
-            display: inline-block;
-        }
-        body div#initial div#buttons a.item:active {
-            background-color: var(--first-btn-active-background-color);
-        }
-        body div#initial div#buttons a.item:focus {
-            /* box-shadow: var(--btn-focus-box-shadow); */
-            /* border: 1px solid var(--first-btn-hover-border-color); */
-            color: var(--first-btn-hover-font-color);
-            background-color: var(--first-btn-hover-background-color);
-            border: 1px solid var(--first-btn-hover-border-color);
-        }
-        body div#initial div#buttons div.btn-file-division {
-            position: relative;
-        }
-        body div#initial div#buttons div.btn-file-division svg {
-            width: 16px;
-            top: 5px;
-            margin-left: 36%;
-            cursor: pointer;
-            position: absolute;
-            fill: var(--first-font-color);
-            display: none;
-        }
-        body div#initial div#buttons div.btn-file-division svg:hover,
-        body div#initial div#buttons div.btn-file-division svg:hover ~ svg {
-            display: inline-block;
-        }
-
-        body div#initial div#buttons a.item.btn-folder {
-            color: var(--second-btn-font-color);
-            background-color: var(--second-btn-background-color);
-            border: 1px solid var(--second-btn-border-color);
-        }
-        body div#initial div#buttons a.item.btn-folder:hover {
-            color: var(--second-btn-hover-font-color);
-            border: 1px solid var(--second-btn-hover-border-color);
-            background-color: var(--second-btn-hover-background-color);
-        }
-        body div#initial div#buttons a.item.btn-folder:active {
-            background-color: var(--second-btn-active-background-color);
-            color: var(--second-btn-hover-font-color);
-        }
-        body div#initial div#buttons a.item.btn-folder:focus {
-            color: var(--second-btn-hover-font-color);
-            border: 1px solid var(--second-btn-hover-border-color);
-            background-color: var(--second-btn-hover-background-color);
-            
-        }
-
-        body div#initial div#buttons a.deleted-item,
-        body div#initial div#buttons svg.deleted-item {
-            display: none !important;
         }
 
         /* header */
@@ -342,6 +207,140 @@
         }
         body div#initial div#header input#txbSearch:focus {
             border: 1px solid var(--txb-focus-border-color);
+        }
+
+        /* Buttons */
+        body div#initial div#buttons {
+            padding-top: 8px;
+        }
+
+        body div#initial div#buttons div.btn-division a.item {
+            text-decoration: none;
+            outline: none;
+            transition: .2s cubic-bezier(.3, 0, .5, 1);
+                -webkit-transition: .2s cubic-bezier(.3, 0, .5, 1);
+                -moz-transition: .2s cubic-bezier(.3, 0, .5, 1);
+                -o-transition: .2s cubic-bezier(.3, 0, .5, 1);
+            user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -moz-user-select: none;
+            display: block;
+            width: 80%;
+            text-align: center;
+            margin: 6px auto 6px auto;
+            font-size: 12pt;
+            border-radius: 4px;
+            height: 24px;
+            color: var(--first-btn-font-color);
+            background-color: var(--first-btn-background-color);
+            border: 1px solid var(--first-btn-border-color);
+        }
+        body div#initial div#buttons div.btn-division a.item:hover {
+            color: var(--first-btn-hover-font-color);
+            background-color: var(--first-btn-hover-background-color);
+            border: 1px solid var(--first-btn-hover-border-color);
+        }
+        body div#initial div#buttons div.btn-division a.item:hover ~ svg {
+            display: inline-block;
+        }
+        body div#initial div#buttons div.btn-division a.item:active {
+            background-color: var(--first-btn-active-background-color);
+        }
+        body div#initial div#buttons div.btn-division a.item:focus {
+            box-shadow: var(--btn-focus-box-shadow);
+            border: 1px solid var(--first-btn-hover-border-color);
+            color: var(--first-btn-hover-font-color);
+            background-color: var(--first-btn-hover-background-color);
+        }
+        body div#initial div#buttons div.btn-division {
+            position: relative;
+        }
+        body div#initial div#buttons div.btn-division svg {
+            width: 16px;
+            top: 5px;
+            margin-left: 36%;
+            cursor: pointer;
+            position: absolute;
+            fill: var(--first-font-color);
+            display: none;
+        }
+        body div#initial div#buttons div.btn-division svg:hover,
+        body div#initial div#buttons div.btn-division svg:hover ~ svg {
+            display: inline-block;
+        }
+
+        body div#initial div#buttons div.btn-division a.item.btn-folder {
+            color: var(--second-btn-font-color);
+            background-color: var(--second-btn-background-color);
+            border: 1px solid var(--second-btn-border-color);
+        }
+        body div#initial div#buttons div.btn-division a.item.btn-folder:hover {
+            color: var(--second-btn-hover-font-color);
+            border: 1px solid var(--second-btn-hover-border-color);
+            background-color: var(--second-btn-hover-background-color);
+        }
+        body div#initial div#buttons div.btn-division a.item.btn-folder:active {
+            background-color: var(--second-btn-active-background-color) !important;
+            color: var(--second-btn-hover-font-color);
+        }
+        body div#initial div#buttons div.btn-division a.item.btn-folder:focus {
+            color: var(--second-btn-hover-font-color);
+            border: 1px solid var(--second-btn-hover-border-color);
+            background-color: var(--second-btn-hover-background-color);
+            
+        }
+
+        body div#initial div#buttons div.btn-division a.deleted-item,
+        body div#initial div#buttons div.btn-division svg.deleted-item {
+            display: none !important;
+        }
+
+        /* Error */
+        body div#initial div#error {
+            display: none;
+            margin-top: 50px;
+        }
+
+        body div#initial div#error svg {
+            fill: var(--error-message-fill);
+            width: 100px;
+        }
+
+        body div#initial div#error h2 {
+            color: var(--error-message-fill);
+            font-size: 14pt;
+            margin: 0px;
+        }
+
+        /* Iframe delete files */
+        body iframe#iframe-file-functions {
+            display: none;
+        }
+
+        /* Popup recreate deleted file */
+        body div#popup-recreate-file {
+            position: relative;
+            transition: all 3s ease-in;
+            display: none;
+            margin: 6px;
+        }
+
+        body div#popup-recreate-file div.content {
+            cursor: pointer;
+            border-radius: 6px;
+            color: var(--first-font-color);
+            background-color: var(--form-background-color);
+            border: 1px solid var(--form-border-color);
+            align-items: center;
+            display: flex;
+            padding-left: 20px;
+            width: 300px;
+            height: 30px;
+        }
+
+        body div#popup-recreate-file div p {
+            margin: 0px;
         }
 
         /* Browser */
@@ -440,7 +439,11 @@
                             $tmp01 = strtolower(str_replace(' ', '-', $folder));
                             $url = "http://localhost:8080/$program_local$program_name?search=$dir/$folder&theme=$theme";
 
-                            echo "<a href='$url' class='item $tmp01 btn-folder'>$folder</a>";
+                            echo "
+                            <div class='btn-division'>
+                                <a href='$url' class='item $tmp01 btn-folder'>$folder</a>
+                            </div>";
+
                             echo "
                             <script>
                                 folder_list.push('$tmp01')
@@ -467,7 +470,7 @@
                             }
                             
                             echo "
-                            <div class='btn-file-division'>
+                            <div class='btn-division'>
                                 <a href='$url' class='item $tmp01'>$file</a>
 
                                 <svg viewBox='-47 0 512 512' class='btn-delete-file delete-$tmp01'>
