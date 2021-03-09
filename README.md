@@ -12,15 +12,15 @@ How to apply themes:
 
   Apply:
 
-      http://localhost:8080/list.php?theme="your theme"
+      http://localhost:{port}/list.php?theme="your theme"
 
 How to remove file extensions:
 
-    http://localhost:8080/list.php?removeex=true
+    http://localhost:{port}/list.php?removeex=true
 
 How to add your styles:
 
-    http://localhost:8080/list.php?styles="your styles.css"
+    http://localhost:{port}/list.php?styles="your styles.css"
 
 All browsers compatibility.  
 You can open and browse files, update and return folders and
