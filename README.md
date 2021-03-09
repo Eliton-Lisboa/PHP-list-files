@@ -2,7 +2,7 @@
 
 Enter your web browser and enter url:
 
-    http://localhost:8080/list.php
+    http://localhost:{port}/list.php
 
 How to apply themes:
   Themes:
